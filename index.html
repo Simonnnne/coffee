@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Parade Coffee Shop</title>
+    <!-- adobe fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/wjh0ban.css">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: "ocr-a-std", monospace;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Center logo */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo-container img {
+            width: 200px;
+            height: auto;
+        }
+
+        /* Flexbox for the overall container */
+        .container {
+            display: flex;
+            justify-content: space-between; /* Ensures even spacing between columns */
+            align-items: stretch; /* Ensures columns stretch to the same height */
+            gap: 30px;
+        }
+
+        /* Columns share the same height */
+        .column {
+            background-color: #f5f4ee;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Ensures that all columns have the same width and stretch evenly */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Ensures uniformity in title alignment and spacing */
+        .drink {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            grid-gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* Drink images */
+        .drink img {
+            width: 100px;
+            height: auto;
+            grid-row: span 2;
+        }
+
+        /* Drink title and description */
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 1;
+            text-align: left; /* Left-aligns text to ensure uniform starting points */
+        }
+
+        p {
+            font-size: 0.8em;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left; /* Left-aligns text for consistency */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stacks columns vertically on small screens */
+            }
+
+            .column {
+                margin-bottom: 20px;
+            }
+        }
+         /* Modal Styles */
+         .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Logo section -->
+    <div class="logo-container">
+        <img src="logo.png" alt="The Parade Coffee Shop Logo">
+    </div>
+
+    <!-- Flexbox container for columns -->
+    <div class="container">
+        <!-- Column 1 -->
+        <div class="column">
+            <div class="drink" onclick="showGame('Sunrise Brew', gameSteps)">
+                <img src="sunrise_brew.png" alt="Sunrise Brew">
+                <div>
+                    <h2>Sunrise Brew</h2>
+                    <p>A double shot of espresso swirled into pulpy orange juice over ice. Perfect for those who can't choose between coffee or juice – now you don't have to!</p>
+                </div>
+            </div>
+
+            <div class="drink">
+                <img src="avocado_latte.png" alt="Avocado Latte">
+                <div>
+                    <h2>Avocado Latte</h2>
+                    <p>A smooth blend of espresso, brown sugar, whole milk, and creamy avocado, crowned with cold foam and fresh avocado cubes. Indulgent and thick with every sip—this brew is sure to avo-cuddle your day with comfort!</p>
+                </div>
+            </div>
+        
+
+              <div class="drink">
+                    <img src="island_long_black.png" alt="New Drink">
+                 <div>
+                        <h2>Island Long Black</h2>
+                      <p>A bold long black meets the bright, refreshing lift of coconut water. It’s a surprising balance—where deep, rich espresso collides with island lightness. Simple. Delicious. Served hot or cold.</p>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- Column 2 -->
+        <div class="column">
+            <div class="drink">
+                <img src="iced_coconut_coffee.png" alt="Iced Coconut Coffee">
+                <div>
+                    <h2>Iced Coconut Coffee</h2>
+                    <p>Wake up with this breezy iced drink—a combination of coconut milk, juice, and espresso. Lightly creamy with a tropical touch, it’s an energizing way to start your day.</p>
+                </div>
+            </div>
+
+            <div class="drink">
+                <img src="oatmilk_flat_white.png" alt="Oatmilk Flat White">
+                <div>
+                    <h2>Oatmilk Flat White</h2>
+                    <p>A single shot of espresso with oatmilk. Perfect for those who prefer a gentler coffee experience—this flat white leans on the milky side, with just a hint of espresso. Topped with delicate latte art for a simple, beautiful finish. </p>
+                </div>
+            </div>
+            <div class="drink">
+                <img src="mango_shake.png" alt="New Drink">
+             <div>
+                    <h2>Mango Shake</h2>
+                  <p>The best drink ever—fresh mango, ice, and water, blended to icy perfection. Bright, refreshing, and perfectly frosty, it’s everything you crave in a mango shake, perfected.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Column 3 -->
+        <div class="column">
+            <div class="drink">
+                <img src="manila_smog.png" alt="Manila Smog">
+                <div>
+                    <h2>Manila Smog</h2>
+                    <p>A messy blend of banana, chocolate, and espresso over ice—its swirling layers give it a look as gritty as Manila's smog. For a sweet finish, top with whipped cream or ice cream. Bold, refreshing, and delightfully chaotic!</p>
+                </div>
+            </div>
+
+            <div class="drink">
+                <img src="sunset_brew.png" alt="Sunset Brew">
+                <div>
+                    <h2>Sunset Brew</h2>
+                    <p>A warm blend of strong coffee, condensed milk, and a hint of cinnamon and spices. Smooth, aromatic, and perfect for those quiet moments.</p>
+                </div>
+            </div>
+       
+  
+    <div class="drink">
+        <img src="barley_tea.png" alt="New Drink">
+     <div>
+            <h2>Barley Tea</h2>
+          <p>It’s barley. It’s tea. Tastes like burnt rice, but in a strangely comforting way. Just a humble, toasted brew for when you need something oddly simple.</p>
+        </div>
+    </div>
+</div>
+
+<!-- -------------------------------------------------------------------------------------------------------- -->
+ 
+<!-- Modal for Coffee Game -->
+ <div id="coffee-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="game-title">Make Your Coffee</h2>
+        <div id="game-steps">
+            <p>Follow the steps to make your drink!</p>
+            <button id="game-next">Next</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Link to External JavaScript File -->
+<script src="script.js"></script>
+
+</body>
+</html>
